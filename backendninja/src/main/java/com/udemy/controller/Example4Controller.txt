@@ -1,0 +1,33 @@
+package com.udemy.controller;
+
+import java.util.logging.Logger;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+import com.udemy.model.Person;
+
+@Controller
+@RequestMapping("/example3")
+public class Example4Controller {
+
+	Logger logger = Logger.getLogger(Example4Controller.class.getName());
+
+	private static final String ERROR_404="404";
+
+	
+	@GetMapping("/404")
+	public String showForm(){
+		
+		return ERROR_404;
+	}
+
+}

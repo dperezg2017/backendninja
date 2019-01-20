@@ -1,0 +1,18 @@
+package com.udemy.controller;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
+
+@Component("exampleComponent")
+public class ExampleComponent {
+
+	private static final Log LOG = LogFactory.getLog(ExampleComponent.class);
+
+	public void soyHello() {
+
+		LOG.info("HELLO SOY LOG INFO");
+
+	}
+
+}

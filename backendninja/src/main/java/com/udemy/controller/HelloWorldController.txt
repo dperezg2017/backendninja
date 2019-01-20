@@ -1,0 +1,72 @@
+package com.udemy.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.udemy.model.Person;
+import com.udemy.service.ExampleService;
+
+@Controller
+@RequestMapping("/example")
+public class HelloWorldController {
+	
+	public static final String EXAMPLE_VIEW ="helloworld";
+	
+	@Autowired
+	@Qualifier("exampleService")
+	private ExampleService exampleService;
+	
+	
+	
+//	@RequestMapping(value="/helloWorld",method=RequestMethod.GET)
+	@GetMapping("/exampleString")
+	public String helloWorld(Model model) {
+//		model.addAttribute("person", new Person("Jon", 23));
+		model.addAttribute("person",getPersona());
+		return EXAMPLE_VIEW;
+	}
+	
+//	@RequestMapping(value="/helloWorld2",method=RequestMethod.GET)
+	@GetMapping("/exampleString2")
+	public ModelAndView helloWorl2() {
+		 ModelAndView mav = new ModelAndView(EXAMPLE_VIEW);
+//		 mav.addObject("person", new Person("MaV", 24));
+		 mav.addObject("person", getPersona());
+		return mav;
+	}
+	
+	@GetMapping("/exampleMAV")
+	public ModelAndView exampleMAV(){
+		ModelAndView mav= new ModelAndView(EXAMPLE_VIEW);
+		mav.addObject("people", exampleService.getListPeople());
+		return mav;
+	}
+	
+	private List<Person> getPersona(){
+		 List<Person> persona = new ArrayList<Person>();
+		 persona.add(new Person("Jon1", 21));
+		 persona.add(new Person("Jon2", 22));
+		 persona.add(new Person("Jon3", 23));
+		 persona.add(new Person("Jon4", 24));
+		 persona.add(new Person("Jon5", 25));
+		 persona.add(new Person("Jon6", 26));
+		 persona.add(new Person("Jon7", 27));
+		 persona.add(new Person("Jon8", 28));
+		 persona.add(new Person("Jon9", 29));
+		 persona.add(new Person("Jon10", 30));
+		
+		return persona;
+	}
+	
+	
+	
+	
+}

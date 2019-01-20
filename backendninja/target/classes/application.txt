@@ -1,0 +1,10 @@
+#Spring properties
+spring:
+	mvc:
+		async:
+			request-timeout:300
+		date-format:DD/MM/YYYY
+		dispatch-trace-request:false
+		dispatch-options-request:true
+		favicon:
+			enabled:true

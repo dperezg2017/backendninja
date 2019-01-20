@@ -1,0 +1,26 @@
+package com.udemy.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.udemy.model.Person;
+import com.udemy.service.ExampleService;
+
+@Service("exampleService")
+public class ExampleServiceImpl implements ExampleService {
+
+	@Override
+	public List<Person> getListPeople() {
+		 List<Person> people = new ArrayList<Person>();
+		 people.add(new Person("Jon1", 21));
+		 people.add(new Person("Jon2", 22));
+		 people.add(new Person("Jon3", 23));
+		 return people;
+	}
+
+	
+	
+	
+}

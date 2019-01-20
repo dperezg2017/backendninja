@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 	<h1>HELLO WORLD <span th:text="${person.name}"></span>!!!!</h1> -->
+<!-- 		<h3>HELLO WORLD <span th:text="${person.age}"></span>!!!!</h3> -->
+
+<table>
+	<thead>
+		<tr>
+			<th>NAME</th>
+			<th>AGE</th>
+		</tr>
+	</thead>
+	<tbody th:each="persona: ${person}">
+		<tr>
+			<th th:text="${persona.name}"></th>
+			<th th:text="${persona.age}"></th>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

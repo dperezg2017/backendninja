@@ -1,0 +1,43 @@
+package com.udemy.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+
+@Component("requestTimeInterceptor")
+public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
+
+	private static final Log LOG = LogFactory
+			.getLog(RequestTimeInterceptor.class);
+
+	// PRIMERO
+	@Override
+	public boolean preHandle(HttpServletRequest request,
+			HttpServletResponse response, Object handler) throws Exception {
+		LOG.info("[1) RequestTimeInterceptor] Se setea el request los paramaetros: StartTime y "
+				+ System.currentTimeMillis());
+		request.setAttribute("StartTime", System.currentTimeMillis());
+		LOG.info("[1) RequestTimeInterceptor] Se seteo el request los paramaetros: StartTime y "
+				+ System.currentTimeMillis());
+		return true;
+	}
+
+	// SEGUNDO
+	@Override
+	public void afterCompletion(HttpServletRequest request,
+			HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		long startTime = (long) request.getAttribute("StartTime");
+		LOG.info("[2) RequestTimeInterceptor] Se llena la variable startTime: "
+				+ startTime);
+		LOG.info("[2) RequestTimeInterceptor] URL: "
+				+ request.getRequestURI().toString() + "Tiempo Total: "
+				+ (System.currentTimeMillis() - startTime) + "ms");
+	}
+
+}
